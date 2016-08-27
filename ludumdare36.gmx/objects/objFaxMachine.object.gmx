@@ -53,7 +53,7 @@ screen_width = surface_get_width(application_surface);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (x &gt; 0 &amp;&amp; x &lt; screen_width - 1) {
+            <string>if (x &gt; 0 &amp;&amp; x &lt; screen_width - 1 &amp;&amp; y &lt; screen_height) {
     height = surface_getpixel(global.heightSurface, x, y)
     if (height != c_black) {
         instance_create(x, y, objExplosion);
@@ -63,6 +63,24 @@ screen_width = surface_get_width(application_surface);
         draw_circle(x, y, 20, false);
         draw_set_blend_mode(bm_normal);
         surface_reset_target();
+        leftCat = collision_circle(x, y, 20, objLeftCatapult, false, true);
+        rightCat = collision_circle(x, y, 20, objRightCatapult, false, true);
+        if (leftCat != noone) {
+            if (x &lt; leftCat.x)
+                leftCat.xvel = xvel;
+            else if (x &gt; leftCat.x)
+                leftCat.xvel = -xvel;
+            
+            leftCat.yvel = -120;
+        }
+        if (rightCat != noone) {
+            if (x &lt; rightCat.x)
+                rightCat.xvel = xvel;
+            else if (x &gt; rightCat.x)
+                rightCat.xvel = -xvel;
+            
+            rightCat.yvel = -120;
+        }
         instance_destroy();
     } else {
         yvel += 9.81 * (delta_time / 1000000) * gravity_scale;
@@ -78,20 +96,106 @@ screen_width = surface_get_width(application_surface);
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="0">
+    <event eventtype="4" ename="objRightCatapult">
       <action>
         <libid>1</libid>
-        <id>203</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_kill_object</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (other.visible) {
+    instance_create(x, y, objExplosion);
+    surface_set_target(global.heightSurface);
+    draw_set_blend_mode(bm_subtract);
+    draw_set_color(c_white);
+    draw_circle(x, y, 40, false);
+    draw_set_blend_mode(bm_normal);
+    surface_reset_target();
+    leftCat = collision_circle(x, y, 40, objLeftCatapult, false, true);
+    rightCat = collision_circle(x, y, 40, objRightCatapult, false, true);
+    if (leftCat != noone) {
+        if (x &lt; leftCat.x)
+            leftCat.xvel = xvel;
+        else if (x &gt; leftCat.x)
+            leftCat.xvel = -xvel;
+        
+        leftCat.yvel = -120;
+    }
+    if (rightCat != noone) {
+        if (x &lt; rightCat.x)
+            rightCat.xvel = xvel;
+        else if (x &gt; rightCat.x)
+            rightCat.xvel = -xvel;
+        
+        rightCat.yvel = -120;
+    }
+    global.rightHealth--;
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objLeftCatapult">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (other.visible) {
+    instance_create(x, y, objExplosion);
+    surface_set_target(global.heightSurface);
+    draw_set_blend_mode(bm_subtract);
+    draw_set_color(c_white);
+    draw_circle(x, y, 40, false);
+    draw_set_blend_mode(bm_normal);
+    surface_reset_target();
+    leftCat = collision_circle(x, y, 40, objLeftCatapult, false, true);
+    rightCat = collision_circle(x, y, 40, objRightCatapult, false, true);
+    if (leftCat != noone) {
+        if (x &lt; leftCat.x)
+            leftCat.xvel = xvel;
+        else if (x &gt; leftCat.x)
+            leftCat.xvel = -xvel;
+        
+        leftCat.yvel = -120;
+    }
+    if (rightCat != noone) {
+        if (x &lt; rightCat.x)
+            rightCat.xvel = xvel;
+        else if (x &gt; rightCat.x)
+            rightCat.xvel = -xvel;
+        
+        rightCat.yvel = -120;
+    }
+    global.leftHealth--;
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

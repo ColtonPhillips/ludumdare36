@@ -39,6 +39,9 @@
     <script>scripts\noiselerp.gml</script>
     <script>scripts\grad.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fntArial16</font>
+  </fonts>
   <objects name="objects">
     <object>objects\objNoiseGenerator</object>
     <object>objects\objMidpointDisplacement</object>
@@ -47,6 +50,7 @@
     <object>objects\objTerrain</object>
     <object>objects\objFaxMachine</object>
     <object>objects\objExplosion</object>
+    <object>objects\objGameManager</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_NoiseTest</room>
