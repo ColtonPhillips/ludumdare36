@@ -54,6 +54,14 @@ if (image_index == 3) {
     image_speed = 0;
     image_index = 0;
 }
+
+if (surface_getpixel(global.heightSurface, x, y + (sprite_height / 2)) == c_black) {
+    yvel += 9.81 * (delta_time / 1000000) * 2;
+} else {
+    yvel = 0;
+}
+
+y += yvel;
 </string>
           </argument>
         </arguments>
@@ -77,20 +85,23 @@ if (image_index == 3) {
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+image_xscale = 1;
 screen_width = surface_get_width(application_surface);
 screen_height = surface_get_height(application_surface);
 
 x = random_range(0, screen_width / 3);
 y = ((1 - global.heightmap[x]) * screen_height) - (sprite_height / 2);
 
+yvel = 0;
+
 max_angle = 90;
 min_angle = 0;
 
-max_force = 200;
+max_force = 400;
 min_force = 100;
 
 angle = 45;
-force = 150;
+force = min_force + ((max_force - min_force) / 2);
 
 leftpressed = false;
 rightpressed = false;
@@ -119,9 +130,9 @@ firepressed = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index, image_index, x, y);
-xoff = dsin(angle) * (force / max_force) * 50;
-yoff = dcos(angle) * (force / max_force) * 50;
+            <string>draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
+xoff = dsin(angle) * (force / max_force) * 80;
+yoff = dcos(angle) * (force / max_force) * 80;
 draw_sprite(sprCrosshair, 0, x + xoff, y - yoff);
 </string>
           </argument>

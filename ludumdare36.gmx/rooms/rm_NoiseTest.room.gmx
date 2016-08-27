@@ -53,8 +53,8 @@
   <instances>
     <instance objName="objMidpointDisplacement" x="32" y="0" name="inst_9D25DFEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLeftCatapult" x="64" y="96" name="inst_19FF6ED2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRightCatapult" x="224" y="96" name="inst_CD37CE3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTerrain" x="64" y="0" name="inst_5FE39CD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRightCatapult" x="128" y="96" name="inst_292A38DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
