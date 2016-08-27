@@ -12,6 +12,13 @@
     <background>background\background0</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\base_room_creation_code.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\obj_escapegame</object>
+    <object>objects\obj_restartgame</object>
+  </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
