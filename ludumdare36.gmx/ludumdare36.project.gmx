@@ -26,6 +26,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
+    <sprite>sprites\sprCatapult</sprite>
+    <sprite>sprites\sprFaxMachine</sprite>
+    <sprite>sprites\sprExplosion</sprite>
+    <sprite>sprites\sprCrosshair</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -37,6 +41,12 @@
   </scripts>
   <objects name="objects">
     <object>objects\objNoiseGenerator</object>
+    <object>objects\objMidpointDisplacement</object>
+    <object>objects\objLeftCatapult</object>
+    <object>objects\objRightCatapult</object>
+    <object>objects\objTerrain</object>
+    <object>objects\objFaxMachine</object>
+    <object>objects\objExplosion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_NoiseTest</room>

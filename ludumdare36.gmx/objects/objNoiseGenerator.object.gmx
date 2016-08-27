@@ -36,8 +36,9 @@ if (permutationfile != -1) {
 }
 file_text_close(permutationfile);
 
-scale_factor = 100.0;
+scale_factor = 5.0;
 level_index = random_range(0, 256);
+height = random_range(0.25, 0.85);
 screen_height = surface_get_height(application_surface);
 screen_width = surface_get_width(application_surface);
 global.noiseSurface = surface_create(screen_width, screen_height);
@@ -63,6 +64,7 @@ noisemin = 999000000;
     for (j = 0; j &lt; screen_width; ++j) {
         global.noisearray[j] += noisemin;
         global.noisearray[j] /= (noisemax - noisemin);
+        global.noisearray[j] *= height;
         
         intensity = floor(global.noisearray[j] * 256);
         global.intensityArray[j] = intensity;
@@ -120,6 +122,7 @@ surface_reset_target();
           <argument>
             <kind>1</kind>
             <string>level_index = random_range(0, 256);
+height = random_range(0.25, 0.85);
 surface_set_target(global.noiseSurface);
 draw_set_color(c_black);
 draw_rectangle(0, 0, screen_width - 1, screen_height - 1, false);
@@ -144,6 +147,7 @@ noisemin = 999000000;
     for (j = 0; j &lt; screen_width; ++j) {
         global.noisearray[j] += noisemin;
         global.noisearray[j] /= (noisemax - noisemin);
+        global.noisearray[j] *= height;
         
         intensity = floor(global.noisearray[j] * 256);
         global.intensityArray[j] = intensity;
