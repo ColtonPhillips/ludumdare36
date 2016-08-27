@@ -354,7 +354,7 @@
     <option_mac_minor_version>0</option_mac_minor_version>
     <option_mac_output_dir>~/GameMaker-Studio/ludumdare36</option_mac_output_dir>
     <option_mac_scale>-1</option_mac_scale>
-    <option_mac_screenkey>-1</option_mac_screenkey>
+    <option_mac_screenkey>0</option_mac_screenkey>
     <option_mac_showcursor>-1</option_mac_showcursor>
     <option_mac_signing_identity>Developer ID Application:</option_mac_signing_identity>
     <option_mac_sizeable>0</option_mac_sizeable>
@@ -412,7 +412,7 @@
     <option_scaleprogress>true</option_scaleprogress>
     <option_sci_UseSCI>0</option_sci_UseSCI>
     <option_sci_serverLocation></option_sci_serverLocation>
-    <option_screenkey>True</option_screenkey>
+    <option_screenkey>False</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
     <option_shortcircuit>True</option_shortcircuit>
     <option_showcursor>True</option_showcursor>

@@ -23,7 +23,14 @@
     </datafile>
   </datafiles>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndMusic</sound>
+    <sound>sound\sndThrow</sound>
+    <sound>sound\sndHit</sound>
+    <sound>sound\sndFax1</sound>
+    <sound>sound\sndFax2</sound>
+    <sound>sound\sndFax3</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
     <sprite>sprites\sprCatapult</sprite>

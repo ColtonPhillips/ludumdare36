@@ -122,6 +122,8 @@ global.rightHealth = 5;
 
 rightWin = 0;
 leftWin = 0;
+
+audio_play_sound(sndMusic, 100, true);
 </string>
           </argument>
         </arguments>

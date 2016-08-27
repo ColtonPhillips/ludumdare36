@@ -49,7 +49,8 @@
     if (image_index == 3) {
         machine = instance_create(x, y - (sprite_height / 2), objFaxMachine);
         machine.y -= (machine.sprite_height / 2);
-         
+        audio_play_sound(sndThrow, 1, false); 
+        
         machine.xvel = dsin(angle) * force;
         machine.yvel = -(dcos(angle) * force);
     } else if (image_index == 7) {

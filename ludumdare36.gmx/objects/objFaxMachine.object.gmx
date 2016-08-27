@@ -31,6 +31,20 @@ gravity_scale = 5;
 
 screen_height = surface_get_height(application_surface);
 screen_width = surface_get_width(application_surface);
+
+snd = ceil(random_range(1, 3));
+
+switch (snd) {
+    case 1:
+        audio_play_sound(sndFax1, 2, false);
+        break;
+    case 2:
+        audio_play_sound(sndFax2, 2, false);
+        break;
+    case 3:
+        audio_play_sound(sndFax3, 2, false);    
+        break;
+}
 </string>
           </argument>
         </arguments>
@@ -81,6 +95,7 @@ screen_width = surface_get_width(application_surface);
             
             rightCat.yvel = -120;
         }
+        audio_play_sound(sndHit, 2, false);
         instance_destroy();
     } else {
         yvel += 9.81 * (delta_time / 1000000) * gravity_scale;
@@ -140,6 +155,7 @@ screen_width = surface_get_width(application_surface);
         rightCat.yvel = -120;
     }
     global.rightHealth--;
+    audio_play_sound(sndHit, 2, false);
     instance_destroy();
 }
 </string>
@@ -191,6 +207,7 @@ screen_width = surface_get_width(application_surface);
         rightCat.yvel = -120;
     }
     global.leftHealth--;
+    audio_play_sound(sndHit, 2, false);
     instance_destroy();
 }
 </string>
