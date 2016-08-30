@@ -30,6 +30,7 @@
     <sound>sound\sndFax1</sound>
     <sound>sound\sndFax2</sound>
     <sound>sound\sndFax3</sound>
+    <sound>sound\sndFax4</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
@@ -38,7 +39,9 @@
     <sprite>sprites\sprExplosion</sprite>
     <sprite>sprites\sprCrosshair</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bgTitle</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\noise.gml</script>
@@ -58,9 +61,11 @@
     <object>objects\objFaxMachine</object>
     <object>objects\objExplosion</object>
     <object>objects\objGameManager</object>
+    <object>objects\objTitle</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_NoiseTest</room>
+    <room>rooms\rm_Title</room>
+    <room>rooms\rm_Game</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

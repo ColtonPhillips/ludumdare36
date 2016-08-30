@@ -114,41 +114,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_width = surface_get_width(application_surface);
-screen_height = surface_get_height(application_surface);
+            <string>screen_width = room_width;
+screen_height = room_height;
 
 global.leftHealth = 5;
 global.rightHealth = 5;
+
+global.leftScore = 0;
+global.rightScore = 0;
+
 
 rightWin = 0;
 leftWin = 0;
 
 audio_play_sound(sndMusic, 100, true);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>global.leftScore = 0;
-global.rightScore = 0;
-
 </string>
           </argument>
         </arguments>
@@ -182,6 +161,72 @@ draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
 draw_text(surface_get_width(application_surface) - 11, 10, "Player 2 Score: " + string(global.leftScore) + "#" + "Health: " + string(global.rightHealth));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with (iNoiseGeneration) {
+    event_perform(ev_keypress, ord('R'));
+}
+with (iLeftCatapult) {
+    event_perform(ev_keypress, ord('R'));
+}
+with (iRightCatapult) {
+    event_perform(ev_keypress, ord('R'));
+}
+with (objFaxMachine)
+{
+    instance_destroy();
+}
+with (objExplosion)
+{
+    instance_destroy();
+}
+global.leftHealth = 5;
+global.rightHealth = 5;
+rightWin = 0;
+leftWin = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>game_end();
 </string>
           </argument>
         </arguments>

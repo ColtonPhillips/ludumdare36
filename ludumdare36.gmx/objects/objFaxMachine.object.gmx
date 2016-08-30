@@ -29,10 +29,10 @@
 yvel = 0;
 gravity_scale = 5;
 
-screen_height = surface_get_height(application_surface);
-screen_width = surface_get_width(application_surface);
+screen_height = room_height;
+screen_width = room_width;
 
-snd = ceil(random_range(1, 3));
+snd = ceil(random_range(1, 4));
 
 switch (snd) {
     case 1:
@@ -43,6 +43,9 @@ switch (snd) {
         break;
     case 3:
         audio_play_sound(sndFax3, 2, false);    
+        break;
+    case 4:
+        audio_play_sound(sndFax4, 2, false);
         break;
 }
 </string>
@@ -81,17 +84,17 @@ switch (snd) {
         rightCat = collision_circle(x, y, 20, objRightCatapult, false, true);
         if (leftCat != noone) {
             if (x &lt; leftCat.x)
-                leftCat.xvel = xvel;
+                leftCat.xvel = abs(xvel);
             else if (x &gt; leftCat.x)
-                leftCat.xvel = -xvel;
+                leftCat.xvel = -abs(xvel);
             
             leftCat.yvel = -120;
         }
         if (rightCat != noone) {
             if (x &lt; rightCat.x)
-                rightCat.xvel = xvel;
+                rightCat.xvel = abs(xvel);
             else if (x &gt; rightCat.x)
-                rightCat.xvel = -xvel;
+                rightCat.xvel = -abs(xvel);
             
             rightCat.yvel = -120;
         }
@@ -140,17 +143,17 @@ switch (snd) {
     rightCat = collision_circle(x, y, 40, objRightCatapult, false, true);
     if (leftCat != noone) {
         if (x &lt; leftCat.x)
-            leftCat.xvel = xvel;
+            leftCat.xvel = abs(xvel);
         else if (x &gt; leftCat.x)
-            leftCat.xvel = -xvel;
+            leftCat.xvel = -abs(xvel);
         
         leftCat.yvel = -120;
     }
     if (rightCat != noone) {
         if (x &lt; rightCat.x)
-            rightCat.xvel = xvel;
+            rightCat.xvel = abs(xvel);
         else if (x &gt; rightCat.x)
-            rightCat.xvel = -xvel;
+            rightCat.xvel = -abs(xvel);
         
         rightCat.yvel = -120;
     }
@@ -192,17 +195,17 @@ switch (snd) {
     rightCat = collision_circle(x, y, 40, objRightCatapult, false, true);
     if (leftCat != noone) {
         if (x &lt; leftCat.x)
-            leftCat.xvel = xvel;
+            leftCat.xvel = abs(xvel);
         else if (x &gt; leftCat.x)
-            leftCat.xvel = -xvel;
+            leftCat.xvel = -abs(xvel);
         
         leftCat.yvel = -120;
     }
     if (rightCat != noone) {
         if (x &lt; rightCat.x)
-            rightCat.xvel = xvel;
+            rightCat.xvel = abs(xvel);
         else if (x &gt; rightCat.x)
-            rightCat.xvel = -xvel;
+            rightCat.xvel = -abs(xvel);
         
         rightCat.yvel = -120;
     }

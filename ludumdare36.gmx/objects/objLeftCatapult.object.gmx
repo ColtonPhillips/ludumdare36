@@ -42,7 +42,7 @@
         force = max(force - (30 * (delta_time / 1000000)), min_force);
     }
     
-    if (firepressed == true) {
+    if (firepressed == true &amp;&amp; current_cooldown &lt;= 0) {
         image_speed = 0.5;
     }
     
@@ -50,6 +50,7 @@
         machine = instance_create(x, y - (sprite_height / 2), objFaxMachine);
         machine.y -= (machine.sprite_height / 2);
         audio_play_sound(sndThrow, 1, false);
+        current_cooldown = fire_cooldown;
         
         machine.xvel = dsin(angle) * force;
         machine.yvel = -(dcos(angle) * force);
@@ -76,7 +77,33 @@
     
     y += yvel * (delta_time / 1000000);
     x += xvel * (delta_time / 1000000);
+    if (current_cooldown &gt; 0) {
+        current_cooldown -= (delta_time / 1000000);
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>firepressed = true;
 </string>
           </argument>
         </arguments>
@@ -101,8 +128,8 @@
             <kind>1</kind>
             <string>image_speed = 0;
 image_xscale = 1;
-screen_width = surface_get_width(application_surface);
-screen_height = surface_get_height(application_surface);
+screen_width = room_width;
+screen_height = room_height;
 
 x = random_range(0, screen_width / 3);
 y = ((1 - global.heightmap[x]) * screen_height) - (sprite_height / 2);
@@ -124,6 +151,9 @@ rightpressed = false;
 uppressed = false;
 downpressed = false;
 firepressed = false;
+
+fire_cooldown = 1.5;
+current_cooldown = 0;
 </string>
           </argument>
         </arguments>
@@ -151,6 +181,16 @@ firepressed = false;
     xoff = dsin(angle) * (force / max_force) * 80;
     yoff = dcos(angle) * (force / max_force) * 80;
     draw_sprite(sprCrosshair, 0, x + xoff, y - yoff);
+    
+    if (current_cooldown &gt; 0) {
+        filled = 1 - (current_cooldown / fire_cooldown);
+        draw_set_color(c_red);
+        topleftx = x - (sprite_width / 2)
+        toplefty = y - (sprite_height / 2) - 10
+        rectheight = 5;
+        rectfullwidth = sprite_width;
+        draw_rectangle(topleftx, toplefty, topleftx + (filled * rectfullwidth), toplefty + rectheight, false); 
+    }
 }
 </string>
           </argument>
@@ -232,6 +272,7 @@ firepressed = false;
 xvel = 0;
 yvel = 0;
 visible = true;
+current_cooldown = 0;
 </string>
           </argument>
         </arguments>
@@ -280,29 +321,6 @@ visible = true;
             <string>leftpressed = true;
 
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>firepressed = true;
 </string>
           </argument>
         </arguments>
@@ -377,6 +395,29 @@ visible = true;
         </arguments>
       </action>
     </event>
+    <event eventtype="10" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>firepressed = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="10" enumb="65">
       <action>
         <libid>1</libid>
@@ -395,29 +436,6 @@ visible = true;
           <argument>
             <kind>1</kind>
             <string>leftpressed = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>firepressed = false;
 </string>
           </argument>
         </arguments>
