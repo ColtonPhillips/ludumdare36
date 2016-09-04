@@ -35,19 +35,42 @@ screen_width = room_width;
 snd = ceil(random_range(1, 4));
 
 switch (snd) {
-    case 1:
+    case 1:snd=sndFax1;
         audio_play_sound(sndFax1, 2, false);
         break;
-    case 2:
+    case 2:snd=sndFax2;
         audio_play_sound(sndFax2, 2, false);
         break;
-    case 3:
+    case 3:snd=sndFax3;
         audio_play_sound(sndFax3, 2, false);    
         break;
-    case 4:
+    case 4:snd=sndFax4;
         audio_play_sound(sndFax4, 2, false);
         break;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_stop_sound(snd);
 </string>
           </argument>
         </arguments>
