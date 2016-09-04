@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xvel = 0;
+            <string>
+
+extra_scale = 1;
+
+rotspeed = random(1)-random(2);
+
+xvel = 0;
 yvel = 0;
 gravity_scale = 5;
 
@@ -93,7 +99,12 @@ switch (snd) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (x &gt; 0 &amp;&amp; x &lt; screen_width - 1 &amp;&amp; y &lt; screen_height) {
+            <string>image_angle +=rotspeed;
+image_xscale = 1 + 0.01*distance_to_object(obj_base);
+image_yscale = 1 + 0.01*distance_to_object(obj_base);
+rotspeed = lerp(rotspeed,0,0.01);
+
+if (x &gt; 0 &amp;&amp; x &lt; screen_width - 1 &amp;&amp; y &lt; screen_height) {
     height = surface_getpixel(global.heightSurface, x, y)
     if (height != c_black) {
         instance_create(x, y, objExplosion);

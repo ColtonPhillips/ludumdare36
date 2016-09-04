@@ -65,6 +65,7 @@
     <object>objects\objExplosion</object>
     <object>objects\objGameManager</object>
     <object>objects\objTitle</object>
+    <object>objects\obj_base</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Title</room>

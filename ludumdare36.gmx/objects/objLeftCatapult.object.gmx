@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_base</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="3" enumb="0">
@@ -35,11 +35,11 @@
     }
     
     if (uppressed == true) {
-        force = min(force + (30 * (delta_time / 1000000)), max_force);
+        force = min(force + (60 * (delta_time / 1000000)), max_force);
     }
     
     if (downpressed == true) {
-        force = max(force - (30 * (delta_time / 1000000)), min_force);
+        force = max(force - (60 * (delta_time / 1000000)), min_force);
     }
     
     if (firepressed == true &amp;&amp; current_cooldown &lt;= 0) {
@@ -78,6 +78,8 @@
     y += yvel * (delta_time / 1000000);
     x += xvel * (delta_time / 1000000);
     if (current_cooldown &gt; 0) {
+    current_cooldown+=random(0.02);
+    if (irandom(100000) == 1) current_cooldown+=random(2);
         current_cooldown -= (delta_time / 1000000);
     }
 }
